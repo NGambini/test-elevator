@@ -1,3 +1,21 @@
-.DS_Store
-.*.swp
-.sw?
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+
+### Typings ###
+## Ignore downloaded typings
+typings
+
+## NodeJs
+
+node_modules/*
+
+## Typescript - Angular2 directory
+app/**/*.js
+app/**/*.js.map
+
+## WWWROOT folder
+dist/*
