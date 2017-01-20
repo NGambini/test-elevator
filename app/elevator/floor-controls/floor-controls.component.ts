@@ -25,9 +25,22 @@ export class FloorControlsComponent implements OnInit, OnChanges {
         }
     }
 
-    public isFloorActive(model: FloorModel) {
-        return this._elevatorService.getCurrentFloor() == model.floorNumber;
+    private get reverseFloors() {
+        return this.floors.slice().reverse();
     }
+
+    private getLightBulbColor(floor: FloorModel): string {
+        if (this._elevatorService.isOccupied) {
+            return "red";
+        }
+        else if (this._elevatorService.getDestination() == floor.floorNumber) {
+            return "green";
+        }
+        else {
+            return "black";
+        }
+    } 
+
 
     /* Called when input parameter changes */
     ngOnChanges(changes: SimpleChanges) {

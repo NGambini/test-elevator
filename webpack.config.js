@@ -87,7 +87,10 @@ const config = {
     new CopyWebpackPlugin([{
         from: helpers.root('app', 'content', 'fonts'),
         to: 'assets/fonts'
-    }])
+    }]),
+    new webpack.ProvidePlugin({
+        "Hammer": "hammerjs/hammer"
+    }),
     ]
 };
 

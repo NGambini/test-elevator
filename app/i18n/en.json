@@ -1,0 +1,20 @@
+{
+    "CONTROLS": 
+    {
+        "FLOOR": "Floor controls",
+        "CAR": "Car controls",
+        "USER": "User controls"
+    },
+    "FLOORS":
+    {
+        "STFLOOR": " st floor",
+        "FIRST": "Ground floor"
+    },
+    "ACTIONS":
+    {
+        "OPENCARDOOR": "Open the car door",
+        "STEPIN": "Step inside",
+        "STEPOUT": "Step outside",
+        "STOP": "Stop car"
+    }
+}

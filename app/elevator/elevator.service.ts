@@ -43,6 +43,25 @@ export class ElevatorService {
         this.elevator.closeDoor();
     }
 
+    public getDestination(): number {
+        if (this.floorRequestStack.length != 0) {
+            return this.floorRequestStack[0];
+        }
+        return -1;
+    }
+
+    public get isOccupied(): boolean {
+        return this.elevator.passengers != 0;
+    }
+
+    public stepIn() {
+        this.elevator.passengers = 1;
+    }
+
+    public stepOut() {
+        this.elevator.passengers = 0;
+    }
+
     public getCurrentFloor() {
         return this.elevator.currentFloor;
     }

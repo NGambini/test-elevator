@@ -6,7 +6,10 @@ import { StorageService } from './common/storage/storage.service';
 import { Subscription } from 'rxjs/Subscription';
 import { TranslateService } from 'ng2-translate';
 
-import 'bootstrap/dist/css/bootstrap.css';
+import 'font-awesome/css/font-awesome.css';
+
+// for webpack provide plugin
+var Hammer: any;
 
 @Component({
     selector: 'wopata-lift',

@@ -3,8 +3,15 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule, Http } from '@angular/http';
 import { routing, appRoutingProviders } from './app.routing';
-import { BrowserXhr } from '@angular/http';
 
+/* Material design */
+import { MaterialModule } from '@angular/material';
+import { MdCardModule } from '@angular/material/card';
+import { MdButtonModule } from '@angular/material/button';
+import { MdIconModule } from '@angular/material/icon';
+import { MdIconRegistry } from '@angular/material/icon';
+
+/* ng2 translate */
 import { TranslateModule, TranslateStaticLoader, TranslateLoader } from 'ng2-translate';
 
 
@@ -38,6 +45,10 @@ import { ElevatorModel } from './elevator/models/elevator.model';
         BrowserModule,
         JsonpModule,
         HttpModule,
+        MaterialModule.forRoot(),
+        MdCardModule,
+        MdButtonModule,
+        MdIconModule,
         TranslateModule.forRoot({
             provide: TranslateLoader,
             useFactory: (http: Http) => new TranslateStaticLoader(http, 'dist/assets/i18n', '.json'),

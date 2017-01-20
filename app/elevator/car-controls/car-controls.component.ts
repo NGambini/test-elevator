@@ -1,5 +1,7 @@
 import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
 
+import { ElevatorService } from '../elevator.service';
+
 @Component({
   selector: 'car-controls',
   template: require('./car-controls.component.html')
@@ -10,12 +12,22 @@ export class CarControlsComponent implements OnInit, OnChanges {
     public numberOfFloors: number;
     private floors = new Array<boolean>();
 
-    constructor() {  }
+    constructor(private _elevatorService: ElevatorService) {
+    }
+
 
      ngOnInit() {
         for (let i = 0 ; i < this.numberOfFloors ; i++) {
             this.floors.push(false);
         }
+    }
+
+    get reverseFloors() {
+        return this.floors.slice().reverse();
+    }
+
+    pressFloorButton(floor: number) {
+        this._elevatorService.sendFloorRequest(floor);
     }
 
     /* Called when input parameter changes */

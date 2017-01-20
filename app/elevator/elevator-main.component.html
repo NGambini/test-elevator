@@ -1,5 +1,20 @@
 <div>
-    <floor-controls [numberOfFloors]="5"></floor-controls>
-    <car-controls [numberOfFloors]="5"></car-controls>
-    <user-controls></user-controls>
+    <md-card>
+        <md-card-title>
+            {{ 'CONTROLS.FLOOR' | translate }}
+        </md-card-title>
+        <floor-controls [numberOfFloors]="5"></floor-controls>
+    </md-card>
+    <md-card>
+        <md-card-title>
+            {{ 'CONTROLS.CAR' | translate }}
+        </md-card-title>    
+        <car-controls [numberOfFloors]="5"></car-controls>
+    </md-card>
+    <md-card>
+        <md-card-title>
+            {{ 'CONTROLS.USER' | translate }}
+        </md-card-title>
+        <user-controls></user-controls>
+    </md-card>
 </div>

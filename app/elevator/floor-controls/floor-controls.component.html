@@ -1,11 +1,13 @@
 <!--Render floors -->
 <table>
-<tr *ngFor="let floor of floors">
-    <td>{{ isFloorActive(floor) }}</td>
-    <td>{{ floor.floorNumber }}</td>
-    <td>
-        <button (click)="callElevator(floor.floorNumber)">Call</button>
-        <button>Open Door</button>
-    </td>
-</tr>
+    <tr *ngFor="let floor of reverseFloors" style="height: 70px;">
+        <td>
+            <i style="font-size: 40px;" [style.color]="getLightBulbColor(floor)" class="fa fa-lightbulb-o" aria-hidden="true"></i>
+        </td>
+        <td>{{ floor.floorNumber }}</td>
+        <td>
+            <button md-raised-button color="primary" (click)="callElevator(floor.floorNumber)">Call</button>
+            <button md-raised-button color="accent">Open Door</button>
+        </td>
+    </tr>
 </table>
