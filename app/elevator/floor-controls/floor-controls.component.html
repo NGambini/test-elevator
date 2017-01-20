@@ -1,0 +1,11 @@
+<!--Render floors -->
+<table>
+<tr *ngFor="let floor of floors">
+    <td>{{ isFloorActive(floor) }}</td>
+    <td>{{ floor.floorNumber }}</td>
+    <td>
+        <button (click)="callElevator(floor.floorNumber)">Call</button>
+        <button>Open Door</button>
+    </td>
+</tr>
+</table>
