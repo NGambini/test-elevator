@@ -40,10 +40,7 @@ export class SmartStrategy implements IElevatorStrategy {
             requestsOnpath = requestsOnpath.sort((a, b) => b - a);
             //Replace part of the array
             let args = [0, requestsOnpath.length].concat(requestsOnpath);
-            console.log("args = " + args.toString());
-          //              console.log("sorted = " + requestsOnpath.toString());
             Array.prototype.splice.apply(this._floorRequestStack, args);
-            //console.log("after splice : " +  this._floorRequestStack.toString());
         }
         else if (this._elevator.currentFloor < this._floorRequestStack[0]) {
             requestsOnpath = this._floorRequestStack.filter(f => f > this._elevator.currentFloor);
@@ -51,10 +48,7 @@ export class SmartStrategy implements IElevatorStrategy {
             requestsOnpath = requestsOnpath.sort((a, b) => a - b);
             //Replace part of the array
             let args = [0, requestsOnpath.length].concat(requestsOnpath);
-            console.log("args = " + args.toString());
-           // console.log("sorted = " + requestsOnpath.toString());
             Array.prototype.splice.apply(this._floorRequestStack, args);
-           // console.log("after splice : " +  this._floorRequestStack.toString());
         }
     }
 
