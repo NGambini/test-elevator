@@ -33,6 +33,7 @@ import { ElevatorService } from './elevator/elevator.service'
 /* Mine - elevator strategies */ 
 
 import { DumbStrategy } from './elevator/strategies/dumb.strategy';
+import { SmartStrategy } from './elevator/strategies/smart.strategy';
 
 /* Mine - models */
 import { ElevatorModel } from './elevator/models/elevator.model';
@@ -70,7 +71,8 @@ import { ElevatorModel } from './elevator/models/elevator.model';
         appRoutingProviders,
         StorageService,
         ElevatorService,
-        {provide: 'IElevatorStrategy', useClass: DumbStrategy }
+        //{provide: 'IElevatorStrategy', useClass: DumbStrategy }
+        {provide: 'IElevatorStrategy', useClass: SmartStrategy }
     ],
     bootstrap: [AppComponent]
 })

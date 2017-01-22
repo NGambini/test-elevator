@@ -14,6 +14,7 @@
     {
         "OPENOUTERDOOR": "Open the outer door",
         "OPENINNERDOOR": "Open the inner door",
+        "CLOSEINNERDOOR": "Close the inner door",
         "STEPIN": "Step inside",
         "STEPOUT": "Step outside",
         "STOP": "Stop car",

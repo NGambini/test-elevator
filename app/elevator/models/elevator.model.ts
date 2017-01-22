@@ -27,9 +27,7 @@ export class ElevatorModel {
         return this.direction == ElevatorDirection.Idle;
     }
 
-    public tryToOpenDoor() {
-        if (this.isTraveling) return false;
-
+    public openDoor() {
         this.doorOpen = true;
     }
 

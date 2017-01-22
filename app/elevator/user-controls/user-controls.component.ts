@@ -12,12 +12,30 @@ export class UserControlsComponent {
     constructor(private _elevatorService: ElevatorService) {
     }
 
+    get canOpenInnerDoor() {
+      return this._elevatorService.canOpenInnerDoor;
+    }
+
+    get canCloseInnerDoor() {
+      return this._elevatorService.canCloseInnerDoor;
+    }
+
+    get canStepIn() {
+      return this._elevatorService.isIdle &&
+      this._elevatorService.elevator.doorOpen &&
+      !this._elevatorService.isOccupied;
+    }
+
+    get canStepOut() {
+      return this._elevatorService.elevator.doorOpen;
+    }
+
     openInnerDoor() {
       this._elevatorService.openInnerDoor();
     }
 
-    canStepIn() {
-      return this._elevatorService.isIdle && !this._elevatorService.isOccupied;
+    closeInnerDoor() {
+      this._elevatorService.closeInnerDoor();
     }
 
     stepIn() {

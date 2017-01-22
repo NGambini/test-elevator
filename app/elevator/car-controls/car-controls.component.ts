@@ -21,6 +21,10 @@ export class CarControlsComponent implements OnInit, OnChanges {
             this.floors.push(false);
         }
     }
+    
+    stopCar() {
+        this._elevatorService.stopCar();
+    }
 
     get reverseFloors() {
         return this.floors.slice().reverse();

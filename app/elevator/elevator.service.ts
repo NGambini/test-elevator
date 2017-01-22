@@ -10,6 +10,7 @@ export class ElevatorService {
     private timer;
     public readonly maxFloors = 10;
     private floorRequestStack: Array<number>;
+    private outerDoors: Array<boolean>;
     public elevator: ElevatorModel;
     private strategy: IElevatorStrategy;
 
@@ -21,6 +22,10 @@ export class ElevatorService {
         this.timer.subscribe(t => this.elevatorInterval());
         this.strategy = strategy;
         this.strategy.initStrategy(this.elevator, this.floorRequestStack);
+        this.outerDoors = new Array<boolean>();
+        for (let i = 0 ; i < this.maxFloors ; i++) {
+            this.outerDoors.push(false);
+        }
     }
 
     // Called each second
@@ -30,12 +35,44 @@ export class ElevatorService {
         this.strategy.decideNextDirection();
     }
 
-    sendFloorRequest(floor: number) {
+    public openOuterDoor(floor: number) {
+        this.outerDoors[floor] = true;
+    }
+
+    public closeOuterDoor(floor: number) {
+        this.outerDoors[floor] = false;
+    }
+
+    public isOuterDoorOpen(floor: number) {
+        return this.outerDoors[floor];
+    }
+
+    public get anyOuterDoorOpen() {
+        return this.outerDoors.find(d => d == true);
+    }
+
+    /* To be able to open the inner door we must be : 
+    - inside the lift or
+    - at a stop somewhere with the outer door already open */
+    public get canOpenInnerDoor() {
+        return this.isOccupied || this.isOuterDoorOpen(this.getCurrentFloor());
+    }
+
+    public get canCloseInnerDoor() {
+        return this.isOccupied;
+    }
+
+    public stopCar() {
+        this.floorRequestStack = [];
+    }
+
+    public sendFloorRequest(floor: number) {
         this.strategy.sendFloorRequest(floor);
     }
 
     public openInnerDoor() {
-        this.elevator.tryToOpenDoor();
+        this.stopCar();
+        this.elevator.openDoor();
     }
 
     public closeInnerDoor() {

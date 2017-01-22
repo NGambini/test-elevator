@@ -21,10 +21,6 @@ export class ElevatorMainComponent {
         this._translateService.use(this.lang);
     }
 
-    maxFloors() {
-        return this._elevatorService.maxFloors;
-    }
-
     get requestStack():Array<number> {
         return this._elevatorService.requestStack;
     }

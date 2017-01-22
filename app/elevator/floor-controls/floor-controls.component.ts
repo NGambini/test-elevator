@@ -38,6 +38,12 @@ export class FloorControlsComponent implements OnInit, OnChanges {
 
     private openDoor(floor: FloorModel) {
         floor.doorOpen = true;
+        this._elevatorService.openOuterDoor(floor.floorNumber);
+    }
+
+    private closeDoor(floor: FloorModel) {
+        floor.doorOpen = false;
+        this._elevatorService.closeOuterDoor(floor.floorNumber);
     }
 
     private getLightBulbColor(floor: FloorModel): string {
