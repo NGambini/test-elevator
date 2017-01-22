@@ -1,20 +1,39 @@
-<div>
+<md-toolbar [color]="primary">
+    <span>
+            {{ 'CONTROLS.USER' | translate }}
+    </span>
+    <md-toolbar-row>
+        <div>
+            <user-controls></user-controls>
+        </div>
+        <div style="margin-top: -90px;margin-left:30px">
+            <md-radio-group [(ngModel)]="lang" (change)="setLang()">
+                <md-radio-button value="fr">Français</md-radio-button>
+                <md-radio-button value="en">English</md-radio-button>
+            </md-radio-group>
+        </div>
+    </md-toolbar-row>
+</md-toolbar>
+<div style="display:flex;flex-wrap: wrap;">
     <md-card>
         <md-card-title>
             {{ 'CONTROLS.FLOOR' | translate }}
         </md-card-title>
-        <floor-controls [numberOfFloors]="5"></floor-controls>
+        <floor-controls [numberOfFloors]="10"></floor-controls>
     </md-card>
-    <md-card>
+    <md-card >
         <md-card-title>
             {{ 'CONTROLS.CAR' | translate }}
         </md-card-title>    
-        <car-controls [numberOfFloors]="5"></car-controls>
+        <car-controls [numberOfFloors]="10"></car-controls>
     </md-card>
+
     <md-card>
         <md-card-title>
-            {{ 'CONTROLS.USER' | translate }}
+            {{ 'TITLES.REQUESTLIST' | translate }}
         </md-card-title>
-        <user-controls></user-controls>
+        <md-list>
+            <md-list-item [style.background-color]="odd ? 'lightgrey' : 'transparent'" *ngFor="let request of requestStack;let odd = odd"> {{ ('FLOORS.FLOOR' | translate) + " " + request }} </md-list-item>
+        </md-list>
     </md-card>
 </div>

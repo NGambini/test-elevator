@@ -8,12 +8,16 @@ import { ElevatorService } from '../elevator.service';
 })
 
 
-export class UserControlsComponent implements OnInit {
+export class UserControlsComponent {
     constructor(private _elevatorService: ElevatorService) {
     }
 
-     ngOnInit() {
-        
+    openInnerDoor() {
+      this._elevatorService.openInnerDoor();
+    }
+
+    canStepIn() {
+      return this._elevatorService.isIdle && !this._elevatorService.isOccupied;
     }
 
     stepIn() {

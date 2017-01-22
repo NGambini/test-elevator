@@ -8,8 +8,7 @@ import { IElevatorStrategy } from './strategies/interface.elevator.strategy';
 @Injectable()
 export class ElevatorService {
     private timer;
-    private readonly maxFloors = 10;
-    private readonly maxPassengers = 2;
+    public readonly maxFloors = 10;
     private floorRequestStack: Array<number>;
     public elevator: ElevatorModel;
     private strategy: IElevatorStrategy;
@@ -52,6 +51,14 @@ export class ElevatorService {
 
     public get isOccupied(): boolean {
         return this.elevator.passengers != 0;
+    }
+
+    public get isIdle(): boolean {
+        return this.elevator.direction == ElevatorDirection.Idle;
+    }
+
+    public get requestStack(): Array<number> {
+        return this.floorRequestStack;
     }
 
     public stepIn() {

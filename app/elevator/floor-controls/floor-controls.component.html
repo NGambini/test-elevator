@@ -2,12 +2,15 @@
 <table>
     <tr *ngFor="let floor of reverseFloors" style="height: 70px;">
         <td>
-            <i style="font-size: 40px;" [style.color]="getLightBulbColor(floor)" class="fa fa-lightbulb-o" aria-hidden="true"></i>
+            <i style="font-size: 40px;transition: color 0.25s linear;" [style.color]="getLightBulbColor(floor)" class="fa fa-lightbulb-o" aria-hidden="true"></i>
+        </td>
+        <td style="width: 50px;text-align: center;">
+            <i style="font-size: 35px;" *ngIf="isElevatorAtFloor(floor.floorNumber)"  class="fa fa-sort" aria-hidden="true"></i>
         </td>
         <td>{{ floor.floorNumber }}</td>
         <td>
-            <button md-raised-button color="primary" (click)="callElevator(floor.floorNumber)">Call</button>
-            <button md-raised-button color="accent">Open Door</button>
+            <button md-raised-button color="primary" (click)="callElevator(floor.floorNumber)">{{ 'ACTIONS.CALL' | translate }}</button>
+            <button (click)="openDoor(floor)" [disabled]="!canOpenDoor(floor)" md-raised-button color="accent"> {{ 'ACTIONS.OPENOUTERDOOR' | translate }}</button>
         </td>
     </tr>
 </table>

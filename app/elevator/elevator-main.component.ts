@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslateService } from 'ng2-translate';
 
 import { ElevatorService } from './elevator.service';
 
@@ -9,8 +10,22 @@ import { ElevatorService } from './elevator.service';
 
 /* Parent component for the elevator page */
 export class ElevatorMainComponent {
-        constructor(private _elevatorService: ElevatorService) {
+    private lang: string;
+
+    constructor(private _elevatorService: ElevatorService,
+                private _translateService: TranslateService) {
+        this.lang = this._translateService.currentLang;
     }
 
-    
+    setLang() {
+        this._translateService.use(this.lang);
+    }
+
+    maxFloors() {
+        return this._elevatorService.maxFloors;
+    }
+
+    get requestStack():Array<number> {
+        return this._elevatorService.requestStack;
+    }
 }

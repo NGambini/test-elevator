@@ -7,14 +7,19 @@
     },
     "FLOORS":
     {
-        "STFLOOR": " st floor",
+        "FLOOR": "Floor",
         "FIRST": "Ground floor"
     },
     "ACTIONS":
     {
-        "OPENCARDOOR": "Open the car door",
+        "OPENOUTERDOOR": "Open the outer door",
+        "OPENINNERDOOR": "Open the inner door",
         "STEPIN": "Step inside",
         "STEPOUT": "Step outside",
-        "STOP": "Stop car"
+        "STOP": "Stop car",
+        "CALL": "Call elevator"
+    },
+    "TITLES": {
+        "REQUESTLIST": "Request list"
     }
 }

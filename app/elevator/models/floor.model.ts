@@ -6,6 +6,6 @@ export enum FloorLight {
 
 export class FloorModel {
     constructor(public floorNumber: number,
-                public canOpenDoor: boolean,
+                public doorOpen: boolean,
                 public light: FloorLight) {}
 }

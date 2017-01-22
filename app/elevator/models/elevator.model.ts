@@ -58,7 +58,6 @@ export class ElevatorModel {
             case ElevatorDirection.Idle:
                 break;
         }
-        console.log("current floor" + this.currentFloor);
     }
 
 }

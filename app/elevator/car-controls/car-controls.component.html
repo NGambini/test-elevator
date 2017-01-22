@@ -1,12 +1,12 @@
-<div>
+<div style="vertical-align: bottom;margin-top: 34px;">
     <!--Hack to reverse the model -->
-    <div style="height:50px" *ngFor="let floor of reverseFloors;let i = index">
+    <div style="height:72px" *ngFor="let floor of reverseFloors;let i = index">
         <button style="width:150px" md-raised-button color="accent" (click)="pressFloorButton(reverseFloors.length - i - 1)" >
             <span *ngIf="reverseFloors.length - i - 1 == 0">{{ 'FLOORS.FIRST' | translate }}</span>
-            <span *ngIf="reverseFloors.length - i - 1 != 0">{{ (reverseFloors.length - i - 1) + ('FLOORS.STFLOOR' | translate) }}</span>
+            <span *ngIf="reverseFloors.length - i - 1 != 0">{{ ('FLOORS.FLOOR' | translate) + (reverseFloors.length - i - 1) }}</span>
         </button>
     </div>
-    <div style="height:50px">
+    <div style="height:72px">
         <button style="width:150px" md-raised-button color="primary">
             <span>{{ 'ACTIONS.STOP' | translate }}</span>
         </button>

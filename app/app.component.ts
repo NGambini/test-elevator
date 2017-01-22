@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { TranslateService } from 'ng2-translate';
 
 import 'font-awesome/css/font-awesome.css';
+import '@angular/material/core/theming/prebuilt/indigo-pink.css';
 
 // for webpack provide plugin
 var Hammer: any;

@@ -7,7 +7,11 @@ import { routing, appRoutingProviders } from './app.routing';
 /* Material design */
 import { MaterialModule } from '@angular/material';
 import { MdCardModule } from '@angular/material/card';
+import { MdToolbarModule } from '@angular/material/toolbar';
+import { MdSelectModule } from '@angular/material/select';
+import { MdRadioModule } from '@angular/material/radio';
 import { MdButtonModule } from '@angular/material/button';
+import { MdListModule } from '@angular/material/list';
 import { MdIconModule } from '@angular/material/icon';
 import { MdIconRegistry } from '@angular/material/icon';
 
@@ -44,11 +48,16 @@ import { ElevatorModel } from './elevator/models/elevator.model';
     imports: [
         BrowserModule,
         JsonpModule,
+        FormsModule,
         HttpModule,
         MaterialModule.forRoot(),
         MdCardModule,
         MdButtonModule,
         MdIconModule,
+        MdToolbarModule,
+        MdRadioModule,
+        MdSelectModule,
+        MdListModule,
         TranslateModule.forRoot({
             provide: TranslateLoader,
             useFactory: (http: Http) => new TranslateStaticLoader(http, 'dist/assets/i18n', '.json'),

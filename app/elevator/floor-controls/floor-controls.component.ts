@@ -17,16 +17,27 @@ export class FloorControlsComponent implements OnInit, OnChanges {
     constructor(private _elevatorService: ElevatorService) {
     }
 
-
     ngOnInit() {
-        console.log("in init : " + this.numberOfFloors);
         for (let i = 0 ; i < this.numberOfFloors ; i++) {
             this.floors.push(new FloorModel(i, false, FloorLight.None));
         }
     }
 
+    private isElevatorAtFloor(floor: number): boolean {
+        return this._elevatorService.getCurrentFloor() == floor;
+    }
+
     private get reverseFloors() {
         return this.floors.slice().reverse();
+    }
+
+    private canOpenDoor(floor: FloorModel) {
+        return this._elevatorService.isIdle &&
+        this._elevatorService.getCurrentFloor() == floor.floorNumber && !floor.doorOpen;
+    }
+
+    private openDoor(floor: FloorModel) {
+        floor.doorOpen = true;
     }
 
     private getLightBulbColor(floor: FloorModel): string {
@@ -41,7 +52,6 @@ export class FloorControlsComponent implements OnInit, OnChanges {
         }
     } 
 
-
     /* Called when input parameter changes */
     ngOnChanges(changes: SimpleChanges) {
         /* We can only add floors because reasons */
@@ -54,7 +64,6 @@ export class FloorControlsComponent implements OnInit, OnChanges {
     }
 
     callElevator(floor: number) {
-        console.log("call elevator");
         this._elevatorService.sendFloorRequest(floor);
     }
 }

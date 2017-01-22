@@ -1,9 +1,9 @@
-<div style="height:50px">
-    <button md-raised-button> {{ 'ACTIONS.OPENCARDOOR' | translate }} </button>
+<div style="height:50px;display: inline-block">
+    <button (click)="openInnerDoor()" md-raised-button> {{ 'ACTIONS.OPENINNERDOOR' | translate }} </button>
 </div>
-<div style="height:50px">
-    <button md-raised-button> {{ 'ACTIONS.STEPIN' | translate }} </button>
+<div style="height:50px;display: inline-block">
+    <button [disabled]="!canStepIn" (click)="stepIn()" md-raised-button> {{ 'ACTIONS.STEPIN' | translate }} </button>
 </div>
-<div style="height:50px">
-    <button md-raised-button> {{ 'ACTIONS.STEPOUT' | translate }} </button>
+<div style="height:50px;display: inline-block">
+    <button (click)="stepOut()" md-raised-button> {{ 'ACTIONS.STEPOUT' | translate }} </button>
 </div>
