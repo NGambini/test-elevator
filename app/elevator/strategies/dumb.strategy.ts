@@ -70,6 +70,7 @@ export class DumbStrategy implements IElevatorStrategy {
 
     /* Requests a floor */
     public sendFloorRequest(floor: number) {
+        if (this._elevator.doorOpen) return null;
         // No duplicates
         if (this._floorRequestStack.includes(floor)) return null;
         this._floorRequestStack.push(floor);
