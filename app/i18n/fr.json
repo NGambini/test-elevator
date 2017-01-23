@@ -2,19 +2,26 @@
     "CONTROLS": 
     {
         "FLOOR": "Contrôles d'étage",
-        "CAR": "Car controls",
-        "USER": "User controls"
+        "CAR": "Contrôles de l'ascenseur",
+        "USER": "Contrôles de l'utilisateur"
     },
     "FLOORS":
     {
-        "STFLOOR": " st floor",
-        "FIRST": "Ground floor"
+        "FLOOR": "Étage",
+        "FIRST": "Premier Étage"
     },
     "ACTIONS":
     {
-        "OPENCARDOOR": "Open the car door",
-        "STEPIN": "Step inside",
-        "STEPOUT": "Step outside",
-        "STOP": "Stop car"
+        "OPENOUTERDOOR": "Ouvrir la porte extérieure",
+        "CLOSEOUTERDOOR": "Open the outer door",
+        "OPENINNERDOOR": "Ouvrir la porte intérieure",
+        "CLOSEINNERDOOR": "Fermer la porte intérieure",
+        "STEPIN": "Entrer",
+        "STEPOUT": "Sortir",
+        "STOP": "Arrêter l'ascensceur",
+        "CALL": "Apeller"
+    },
+    "TITLES": {
+        "REQUESTLIST": "Liste des appels"
     }
 }

@@ -10,6 +10,7 @@
   "scripts": {
     "lint": "tslint \"src/**/*.ts\"",
     "start": "webpack-dev-server --content-base dist/",
+    "test": "karma start karma.conf.js",
     "postinstall": "typings install"
   },
   "dependencies": {
@@ -52,6 +53,7 @@
     "html-webpack-plugin": "^2.15.0",
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.22",
+    "karma-chrome-launcher": "^2.0.0",
     "karma-coverage": "^1.0.0",
     "karma-jasmine": "^0.3.8",
     "karma-mocha-reporter": "^2.0.4",

@@ -89,7 +89,7 @@ export class SmartStrategy implements IElevatorStrategy {
     /* Requests a floor */
     public sendFloorRequest(floor: number) {
         // No duplicates
-        if (this._floorRequestStack.includes(floor)) return null;
+        if (this._floorRequestStack.includes(floor)) return;
         this._floorRequestStack.push(floor);
     }
 }

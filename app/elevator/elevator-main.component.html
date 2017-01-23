@@ -7,7 +7,7 @@
             <user-controls></user-controls>
         </div>
         <div style="margin-top: -90px;margin-left:30px">
-            <md-radio-group [(ngModel)]="lang" (change)="setLang()">
+            <md-radio-group [(value)]="lang" [(ngModel)]="lang" (change)="setLang()">
                 <md-radio-button value="fr">Français</md-radio-button>
                 <md-radio-button value="en">English</md-radio-button>
             </md-radio-group>

@@ -13,6 +13,7 @@
     "ACTIONS":
     {
         "OPENOUTERDOOR": "Open the outer door",
+        "CLOSEOUTERDOOR": "Open the outer door",
         "OPENINNERDOOR": "Open the inner door",
         "CLOSEINNERDOOR": "Close the inner door",
         "STEPIN": "Step inside",

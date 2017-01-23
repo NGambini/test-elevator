@@ -30,6 +30,10 @@ export class CarControlsComponent implements OnInit, OnChanges {
         return this.floors.slice().reverse();
     }
 
+    get canPressButtons() {
+        return this._elevatorService.isOccupied && !this._elevatorService.elevator.doorOpen;
+    }
+
     pressFloorButton(floor: number) {
         this._elevatorService.sendFloorRequest(floor);
     }

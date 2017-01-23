@@ -9,8 +9,9 @@
         </td>
         <td>{{ floor.floorNumber }}</td>
         <td>
-            <button md-raised-button color="primary" (click)="callElevator(floor.floorNumber)">{{ 'ACTIONS.CALL' | translate }}</button>
+            <button [disabled]="isAtFloor(floor)" md-raised-button color="primary" (click)="callElevator(floor.floorNumber)">{{ 'ACTIONS.CALL' | translate }}</button>
             <button (click)="openDoor(floor)" [disabled]="!canOpenDoor(floor)" md-raised-button color="accent"> {{ 'ACTIONS.OPENOUTERDOOR' | translate }}</button>
+            <!--<button (click)="closeDoor(floor)" [disabled]="canOpenDoor(floor)" md-raised-button color="accent"> {{ 'ACTIONS.CLOSEOUTERDOOR' | translate }}</button>-->
         </td>
     </tr>
 </table>

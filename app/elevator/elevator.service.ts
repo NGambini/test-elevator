@@ -36,6 +36,10 @@ export class ElevatorService {
     }
 
     public openOuterDoor(floor: number) {
+        //close all others 
+        this.outerDoors.forEach(element => {
+            element = false;
+        });
         this.outerDoors[floor] = true;
     }
 
@@ -44,6 +48,8 @@ export class ElevatorService {
     }
 
     public isOuterDoorOpen(floor: number) {
+        console.log("floor "  + floor);
+        console.log(this.outerDoors[floor]);
         return this.outerDoors[floor];
     }
 
@@ -51,15 +57,12 @@ export class ElevatorService {
         return this.outerDoors.find(d => d == true);
     }
 
-    /* To be able to open the inner door we must be : 
-    - inside the lift or
-    - at a stop somewhere with the outer door already open */
     public get canOpenInnerDoor() {
-        return this.isOccupied || this.isOuterDoorOpen(this.getCurrentFloor());
+        return this.isOuterDoorOpen(this.getCurrentFloor()) && !this.elevator.doorOpen;
     }
 
     public get canCloseInnerDoor() {
-        return this.isOccupied;
+        return (this.isOccupied || this.isOuterDoorOpen(this.getCurrentFloor())) && this.elevator.doorOpen;
     }
 
     public stopCar() {
@@ -67,11 +70,14 @@ export class ElevatorService {
     }
 
     public sendFloorRequest(floor: number) {
+        if (this.elevator.doorOpen) return;
         this.strategy.sendFloorRequest(floor);
     }
 
     public openInnerDoor() {
-        this.stopCar();
+        if (this.isOccupied) {
+            this.stopCar();
+        }
         this.elevator.openDoor();
     }
 

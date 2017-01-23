@@ -31,6 +31,10 @@ export class FloorControlsComponent implements OnInit, OnChanges {
         return this.floors.slice().reverse();
     }
 
+    private isAtFloor(floor: FloorModel) {
+        return this._elevatorService.getCurrentFloor() == floor.floorNumber;
+    }
+
     private canOpenDoor(floor: FloorModel) {
         return this._elevatorService.isIdle &&
         this._elevatorService.getCurrentFloor() == floor.floorNumber && !floor.doorOpen;

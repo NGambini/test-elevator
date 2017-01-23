@@ -20,11 +20,11 @@ Tech used :
 
 ## Installation
 
-* Make sure you have the latest version of node & npm.
+* Make sure you have the latest version of node & npm (IMPORTANT)
 * npm install (in the project folder)
-* npm install weback-dev-server typings -g
-* start the project with webpack-dev-server --content-base dist/
-* If using VS Code, you can just do CTRL+SHIFT+B
+* Ignore UNMET PEER DEPENDENCY Warnings
+* npm install webpack-dev-server typings -g
+* start the project with command : webpack-dev-server or : npm start
 * Project is then served on http://localhost:8080/webpack-dev-server/
 
 ## Todo
@@ -32,3 +32,4 @@ Tech used :
 * Add more algorithms
 * Persist current floor and request list in local storage
 * Better toolbar UI
+* Moar tests
