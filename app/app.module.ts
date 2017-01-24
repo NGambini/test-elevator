@@ -61,7 +61,7 @@ import { ElevatorModel } from './elevator/models/elevator.model';
         MdListModule,
         TranslateModule.forRoot({
             provide: TranslateLoader,
-            useFactory: (http: Http) => new TranslateStaticLoader(http, 'dist/assets/i18n', '.json'),
+            useFactory: (http: Http) => new TranslateStaticLoader(http, 'app/i18n', '.json'),
             deps: [Http]
         }),
         routing

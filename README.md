@@ -10,6 +10,7 @@ Tech used :
 * Webpack
 * ng2-translate
 * Material2
+* Karma / Jasmine for unit testing
 
 ## Features
 
@@ -17,6 +18,7 @@ Tech used :
 * Uses local storage to store user lang
 * Material Design
 * Dependency Injection : choose your algorithm in app/app.module.ts file
+
 
 ## Installation
 
@@ -26,6 +28,7 @@ Tech used :
 * npm install webpack-dev-server typings -g
 * start the project with command : webpack-dev-server or : npm start
 * Project is then served on http://localhost:8080/webpack-dev-server/
+* Running tests : npm test
 
 ## Todo
 

@@ -58,7 +58,7 @@ export class ElevatorService {
     }
 
     public get canOpenInnerDoor() {
-        return this.isOuterDoorOpen(this.getCurrentFloor()) && !this.elevator.doorOpen;
+        return (this.isOccupied || this.isOuterDoorOpen(this.getCurrentFloor())) && !this.elevator.doorOpen;
     }
 
     public get canCloseInnerDoor() {

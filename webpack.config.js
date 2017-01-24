@@ -12,9 +12,9 @@ const config = {
         'app': './app/main.ts'
     },
     output: {
-        path: helpers.root('dist/'),
+        path: helpers.root('/'),
         filename: '[name].js',
-        publicPath: '/dist',
+        publicPath: '/',
         chunkFilename: '[id].chunk.js'
     },
     resolve: {

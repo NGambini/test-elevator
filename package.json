@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "lint": "tslint \"src/**/*.ts\"",
-    "start": "webpack-dev-server --content-base dist/",
+    "start": "webpack-dev-server",
     "test": "karma start karma.conf.js",
     "postinstall": "typings install"
   },

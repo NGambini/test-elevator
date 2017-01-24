@@ -37,7 +37,12 @@ export class FloorControlsComponent implements OnInit, OnChanges {
 
     private canOpenDoor(floor: FloorModel) {
         return this._elevatorService.isIdle &&
-        this._elevatorService.getCurrentFloor() == floor.floorNumber && !floor.doorOpen;
+        this._elevatorService.getCurrentFloor() == floor.floorNumber && !this._elevatorService.isOuterDoorOpen(floor.floorNumber);
+    }
+
+    private canCloseDoor(floor: FloorModel) {
+        return this._elevatorService.isIdle &&
+        this._elevatorService.getCurrentFloor() == floor.floorNumber && this._elevatorService.isOuterDoorOpen(floor.floorNumber);
     }
 
     private openDoor(floor: FloorModel) {
