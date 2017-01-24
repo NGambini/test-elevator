@@ -1,68 +1,118 @@
-module.exports = function(config) {
-    config.set({
+const webpack = require('webpack');
 
-        basePath: '.',
-        
-        mime: { 'text/x-typescript': ['ts','tsx'] },
-        
-        frameworks: ['jasmine'],
+const ENV_PRODUCTION = process.env.WEBPACK_ENV === 'production';
 
-        files: [
-            // paths loaded by Karma
-            {pattern: 'node_modules/angular2/bundles/angular2-polyfills.js', included: true, watched: true},
-            {pattern: 'node_modules/systemjs/dist/system.src.js', included: true, watched: true},
-            {pattern: 'node_modules/rxjs/bundles/Rx.js', included: true, watched: true},
-            {pattern: 'node_modules/angular2/bundles/angular2.dev.js', included: true, watched: true},
-            {pattern: 'node_modules/angular2/bundles/testing.dev.js', included: true, watched: true},
-            {pattern: 'node_modules/angular2/bundles/http.dev.js', included: true, watched: true},
-            {pattern: 'karma-test-shim.js', included: true, watched: true},
+module.exports = config => {
+  config.set({
 
-            // paths loaded via module imports
-            {pattern: 'app/**/*.js', included: false, watched: true},
+    // base path that will be used to resolve all patterns (eg. files, exclude)
+    basePath: '',
 
-            // paths to support debugging with source maps in dev tools
-            {pattern: 'app/**/*.ts', included: false, watched: false},
-            {pattern: 'dist/**/*.js.map', included: false, watched: false}
-        ],
 
-        // proxied base paths
-        proxies: {
-            // required for component assests fetched by Angular's compiler
-            '/src/': '/base/src/'
+    // frameworks to use
+    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
+    frameworks: ['jasmine'],
+
+
+    // list of files / patterns to load in the browser
+    files: [
+      './karma.entry.ts'
+    ],
+
+
+    // list of files to exclude
+    exclude: [
+    ],
+
+
+    // preprocess matching files before serving them to the browser
+    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+    preprocessors: {
+      './karma.entry.ts': ['webpack']
+    },
+
+    coverageReporter: {
+      dir: 'coverage',
+      reporters: [{
+        type: 'json',
+        subdir: '.',
+        file: 'coverage.json'
+      }]
+    },
+
+    webpack: {
+      devtool: 'inline-source-map',
+      resolve: {
+        extensions: ['.ts', '.js', '.json']
+      },
+      module: {
+        rules: [
+          // { enforce: 'pre', test: /\.ts$/, exclude: ['node_modules', /\.spec.ts$/], loader: 'istanbul-instrumenter-loader' },
+          { test: /\.ts$/, exclude: /node_modules/, loader: 'ts-loader' },
+          { test: /\.html/, loader: 'raw-loader' },
+          { test: /\.styl$/, loader: 'css-loader!stylus-loader' },
+          { test: /\.css$/, loader: 'css-loader' },
+          { test: /\.(gif|png|jpe?g)$/i, loader: 'file-loader' },
+          {
+            test: /\.(eot|svg|ttf|woff|woff2)$/,
+            exclude: /node_modules/,
+            loader: 'file-loader?name=/assets/fonts/[name].[ext]'
         },
+        {
+            test: /\.(eot|woff|woff2|ttf|svg)(\?\S*)?$/,
+            loader: 'url-loader?limit=100000&name=[name].[ext]'
+        }
+        ]
+      },
+      stats: { colors: true, reasons: true },
+      plugins: [
+        // Fixes Angular 2 error
+        new webpack.ContextReplacementPlugin(
+          /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+          __dirname
+        )
+      ]
+    },
 
-        port: 9876,
+    webpackMiddleware: {
+      noInfo: true //please don't spam the console when running in karma!
+    },
 
-        logLevel: config.LOG_INFO,
+    // test results reporter to use
+    // possible values: 'dots', 'progress'
+    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+    reporters: ['mocha'],
 
-        colors: true,
 
-        autoWatch: true,
+    // web server port
+    port: 9876,
 
-        browsers: ['Chrome'],
 
-        // Karma plugins loaded
-        plugins: [
-            'karma-jasmine',
-            'karma-coverage',
-            'karma-chrome-launcher'
-        ],
+    // enable / disable colors in the output (reporters and logs)
+    colors: true,
 
-        // Coverage reporter generates the coverage
-        reporters: ['progress', 'dots', 'coverage'],
 
-        // Source files that you wanna generate coverage for.
-        // Do not include tests or libraries (these files will be instrumented by Istanbul)
-        preprocessors: {
-            'app/**/!(*spec).js': ['coverage']
-        },
+    // level of logging
+    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+    logLevel: config.LOG_INFO,
 
-        coverageReporter: {
-            reporters:[
-                {type: 'json', subdir: '.', file: 'coverage-final.json'}
-            ]
-        },
 
-        singleRun: true
-    })
+    // enable / disable watching file and executing tests whenever any file changes
+    autoWatch: ENV_PRODUCTION ? false : true,
+
+    // start these browsers
+    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+    browsers: ['Chrome'],
+
+
+    // Continuous Integration mode
+    // if true, Karma captures browsers, runs the tests and exits
+    singleRun: ENV_PRODUCTION ? true : false,
+
+    // fix for Chrome 55
+    mime: {
+      'text/x-typescript': ['ts','tsx']
+    },
+
+  });
 };
